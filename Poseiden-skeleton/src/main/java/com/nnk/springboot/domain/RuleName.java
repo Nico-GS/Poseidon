@@ -37,22 +37,22 @@ public class RuleName {
     private String description;
 
     @Column(name = "json")
-    @NotBlank
+    @NotBlank(message = "Json is mandatory")
     @Length(max = 125)
     private String json;
 
     @Column(name = "template")
-    @NotBlank
+    @NotBlank(message = "Template is mandatory")
     @Length(max = 512)
     private String template;
 
     @Column(name = "sql_str")
-    @NotBlank
+    @NotBlank(message = "SqlStr is mandatory")
     @Length(max = 125)
     private String sqlStr;
 
     @Column(name = "sql_part")
-    @NotBlank
+    @NotBlank(message = "SqlPart is mandatory")
     @Length(max = 125)
     private String sqlPart;
 

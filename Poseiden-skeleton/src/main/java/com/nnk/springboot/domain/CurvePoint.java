@@ -9,6 +9,7 @@ import org.hibernate.validator.constraints.Length;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.sql.Timestamp;
 
 @Getter
@@ -22,33 +23,28 @@ public class CurvePoint {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Length(max = 4)
+    @Size(max = 4)
     private Integer id;
 
     @Column(name = "curve_id")
-    @Length(max = 4)
+    @Size(max = 4)
     @NotBlank(message = "CurveId is mandatory")
-    @NotNull
     private Integer curveId;
 
     @Column(name = "as_of_date")
-    @NotBlank(message = "As of date is mandatory")
-    @NotNull
+    @NotBlank(message = "AsOfDate is mandatory")
     private Timestamp asOfDate;
 
     @Column(name = "term")
     @NotBlank(message = "Term is mandatory")
-    @NotNull
     private Double term;
 
     @Column(name = "value")
     @NotBlank(message = "Value is mandatory")
-    @NotNull
     private Double value;
 
     @Column(name = "creation_date")
-    @NotBlank(message = "Creation date is mandatory")
-    @NotNull
+    @NotBlank(message = "CreationDate is mandatory")
     private Timestamp creationDate;
 
     public CurvePoint(int curveId, double term, double value) {

@@ -38,64 +38,72 @@ public class BidList {
     private String type;
 
     @Column(name = "bid_quantity")
-    @NotBlank(message = "Bid Quantity is mandatory")
     private Double bidQuantity;
 
     @Column(name = "ask_quantity")
-    @NotBlank(message = "Ask Quantity is mandatory")
     private Double askQuantity;
 
     @Column(name = "bid")
-    @NotBlank(message = "Bid is mandatory")
     private Double bid;
 
     @Column(name = "ask")
-    @NotBlank(message = "Ask is mandatory")
     private Double ask;
 
     @Column(name = "benchmark")
+    @Size(max = 125)
     private String benchmark;
 
     @Column(name = "bid_list_date")
     private Timestamp bidListDate;
 
     @Column(name = "commentary")
+    @Size(max = 125)
     private String commentary;
 
     @Column(name = "security")
+    @Size(max = 125)
     private String security;
 
     @Column(name = "status")
+    @Size(max = 10)
     private String status;
 
     @Column(name = "trader")
+    @Size(max = 125)
     private String trader;
 
     @Column(name = "book")
+    @Size(max = 125)
     private String book;
 
     @Column(name = "creation_name")
+    @Size(max = 125)
     private String creationName;
 
     @Column(name = "creation_date")
     private Timestamp creationDate;
 
     @Column(name = "revision_name")
+    @Size(max = 125)
     private String revisionName;
 
     @Column(name = "revision_date")
     private Timestamp revisionDate;
 
     @Column(name = "deal_name")
+    @Size(max = 125)
     private String dealName;
 
     @Column(name = "deal_type")
+    @Size(max = 125)
     private String dealType;
     
     @Column(name = "source_list_id")
+    @Size(max = 125)
     private String sourceListId;
     
     @Column(name = "side")
+    @Size(max = 125)
     private String side;
 
 
