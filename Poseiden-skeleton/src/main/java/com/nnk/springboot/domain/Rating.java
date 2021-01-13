@@ -41,6 +41,7 @@ public class Rating {
 
     @Column(name = "order_number")
     @NotBlank(message = "Order Number is mandatory")
+    @NotNull
     @Length(max = 4)
     private Integer orderNumber;
 
