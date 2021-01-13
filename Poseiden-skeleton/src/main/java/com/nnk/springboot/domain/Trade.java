@@ -8,6 +8,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 @Getter
@@ -41,10 +42,10 @@ public class Trade {
     private Double sellQuantity;
 
     @Column(name = "buy_price")
-    private Double buyPrice;
+    private BigDecimal buyPrice;
 
     @Column(name = "sell_price")
-    private Double sellPrice;
+    private BigDecimal sellPrice;
 
     @Column(name = "trade_date")
     private Timestamp tradeDate;

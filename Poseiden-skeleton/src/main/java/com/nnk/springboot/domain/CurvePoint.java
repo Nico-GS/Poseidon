@@ -9,6 +9,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 @Getter
@@ -28,6 +29,7 @@ public class CurvePoint {
     @Column(name = "curve_id")
     @Size(max = 4)
     @NotBlank(message = "CurveId is mandatory")
+    @NotNull
     private Integer curveId;
 
     @Column(name = "as_of_date")
@@ -46,9 +48,11 @@ public class CurvePoint {
     @NotBlank(message = "CreationDate is mandatory")
     private Timestamp creationDate;
 
-    public CurvePoint(int curveId, double term, double value) {
+    public CurvePoint(int curveId, double term, Double value) {
         this.curveId = curveId;
         this.term = term;
         this.value = value;
     }
+
+
 }
