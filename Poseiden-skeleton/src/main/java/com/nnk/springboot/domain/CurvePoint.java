@@ -27,27 +27,27 @@ public class CurvePoint {
 
     @Column(name = "curve_id")
     @Length(max = 4)
-    @NotBlank
+    @NotBlank(message = "CurveId is mandatory")
     @NotNull
     private Integer curveId;
 
     @Column(name = "as_of_date")
-    @NotBlank
+    @NotBlank(message = "As of date is mandatory")
     @NotNull
     private Timestamp asOfDate;
 
     @Column(name = "term")
-    @NotBlank
+    @NotBlank(message = "Term is mandatory")
     @NotNull
     private Double term;
 
     @Column(name = "value")
-    @NotBlank
+    @NotBlank(message = "Value is mandatory")
     @NotNull
     private Double value;
 
     @Column(name = "creation_date")
-    @NotBlank
+    @NotBlank(message = "Creation date is mandatory")
     @NotNull
     private Timestamp creationDate;
 

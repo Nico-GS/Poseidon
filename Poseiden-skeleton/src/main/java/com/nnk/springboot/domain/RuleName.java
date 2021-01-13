@@ -18,7 +18,8 @@ import java.sql.Timestamp;
 @Entity
 @Table(name = "rule_name")
 public class RuleName {
-    // TODO: Map columns in data table RULENAME with corresponding java fields
+
+    // TODO:: Map columns in data table RULENAME with corresponding java fields
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,38 +27,32 @@ public class RuleName {
     private Integer id;
 
     @Column(name = "name")
-    @NotBlank
-    @NotNull
+    @NotBlank(message = "Name is mandatory")
     @Length(max = 125)
     private String name;
 
     @Column(name = "description")
-    @NotBlank
-    @NotNull
+    @NotBlank(message = "Description is mandatory")
     @Length(max = 125)
     private String description;
 
     @Column(name = "json")
     @NotBlank
-    @NotNull
     @Length(max = 125)
     private String json;
 
     @Column(name = "template")
     @NotBlank
-    @NotNull
     @Length(max = 512)
     private String template;
 
     @Column(name = "sql_str")
     @NotBlank
-    @NotNull
     @Length(max = 125)
     private String sqlStr;
 
     @Column(name = "sql_part")
     @NotBlank
-    @NotNull
     @Length(max = 125)
     private String sqlPart;
 
