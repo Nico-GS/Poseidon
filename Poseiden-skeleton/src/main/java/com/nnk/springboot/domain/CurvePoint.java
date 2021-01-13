@@ -4,9 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.math.BigDecimal;
@@ -23,29 +25,22 @@ public class CurvePoint {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Size(max = 4)
     private Integer id;
 
-    @Column(name = "curve_id")
-    @Size(max = 4)
-    @NotBlank(message = "CurveId is mandatory")
+    @Column(name = "curve_id", length = 4)
     @NotNull
     private Integer curveId;
 
     @Column(name = "as_of_date")
-    @NotBlank(message = "AsOfDate is mandatory")
     private Timestamp asOfDate;
 
     @Column(name = "term")
-    @NotBlank(message = "Term is mandatory")
     private Double term;
 
     @Column(name = "value")
-    @NotBlank(message = "Value is mandatory")
     private Double value;
 
     @Column(name = "creation_date")
-    @NotBlank(message = "CreationDate is mandatory")
     private Timestamp creationDate;
 
     public CurvePoint(int curveId, double term, Double value) {

@@ -23,7 +23,6 @@ public class RuleName {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Length(max = 4)
     private Integer id;
 
     @Column(name = "name")

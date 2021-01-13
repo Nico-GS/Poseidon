@@ -11,6 +11,7 @@ import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.sql.Timestamp;
+import java.util.List;
 
 @Getter
 @Setter
@@ -23,7 +24,6 @@ public class BidList {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Size(max = 4)
     private Integer id;
 
     @Column(name = "account")
@@ -106,9 +106,14 @@ public class BidList {
     private String side;
 
 
+
     public BidList(String accountTest, String typeTest, double bidQuantity) {
         this.account = accountTest;
         this.type = typeTest;
         this.bidQuantity = bidQuantity;
+    }
+
+    public Integer getBidListId() {
+        return null;
     }
 }
