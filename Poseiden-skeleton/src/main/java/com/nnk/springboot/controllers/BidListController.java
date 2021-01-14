@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.validation.Valid;
 import java.sql.Timestamp;
 import java.util.List;
+import java.util.Optional;
 
 
 @Controller
@@ -59,8 +60,8 @@ public class BidListController {
 
     @GetMapping("/bidList/update/{id}")
     public String showUpdateForm(@PathVariable("id") Integer id, Model model) {
-        // TODO: get Bid by Id and to model then show to the form
-        BidList bidList = bidListRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid Bid Id : " + id));
+        // DONE: get Bid by Id and to model then show to the form
+        Optional<BidList> bidList = bidListRepository.findById(id);
         model.addAttribute("bidList", bidList);
         return "bidList/update";
     }
@@ -68,17 +69,19 @@ public class BidListController {
     @PostMapping("/bidList/update/{id}")
     public String updateBid(@PathVariable("id") Integer id, @Valid BidList bidList,
                              BindingResult result, Model model) {
-        // TODO: check required fields, if valid call service to update Bid and return list Bid
+        // DONE: check required fields, if valid call service to update Bid and return list Bid
         if (result.hasErrors()) {
             return "bidList/list";
         }
-
+        bidListService.save(bidList);
+        model.addAttribute("bidList", bidListService.findAll());
         return "redirect:/bidList/list";
     }
 
     @GetMapping("/bidList/delete/{id}")
     public String deleteBid(@PathVariable("id") Integer id, Model model) {
-        // TODO: Find Bid by Id and delete the bid, return to Bid list
+        // DONE: Find Bid by Id and delete the bid, return to Bid list
+        bidListService.delete(id);
         return "redirect:/bidList/list";
     }
 }
