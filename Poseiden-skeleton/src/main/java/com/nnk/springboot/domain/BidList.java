@@ -5,10 +5,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Required;
+import org.springframework.boot.context.properties.bind.DefaultValue;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.sql.Timestamp;
 import java.util.List;
@@ -53,6 +56,7 @@ public class BidList {
     private String benchmark;
 
     @Column(name = "bid_list_date")
+    @DateTimeFormat(pattern = "MM/dd/yyyy")
     private Timestamp bidListDate;
 
     @Column(name = "commentary")
@@ -80,6 +84,7 @@ public class BidList {
     private String creationName;
 
     @Column(name = "creation_date")
+    @DateTimeFormat(pattern = "MM/dd/yyyy")
     private Timestamp creationDate;
 
     @Column(name = "revision_name")
@@ -87,6 +92,7 @@ public class BidList {
     private String revisionName;
 
     @Column(name = "revision_date")
+    @DateTimeFormat(pattern = "MM/dd/yyyy")
     private Timestamp revisionDate;
 
     @Column(name = "deal_name")
