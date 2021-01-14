@@ -24,8 +24,8 @@ public class BidTests {
 		BidList bid = new BidList("Account Test", "Type Test", 10d);
 
 		// Save
-		bid = bidListRepository.save(bid); // error ici
-		Assert.assertNotNull(bid.getBidListId());
+		bid = bidListRepository.save(bid);
+		Assert.assertNotNull(bid.getBidListId()); // error ici
 		Assert.assertEquals(bid.getBidQuantity(), 10d, 10d);
 
 		// Update

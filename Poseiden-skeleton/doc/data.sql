@@ -4,7 +4,7 @@ CREATE TABLE bid_list (
   type VARCHAR(30) NOT NULL,
   bid_quantity DOUBLE,
   ask_quantity DOUBLE,
-  bid DOUBLE ,
+  bid DOUBLE,
   ask DOUBLE,
   benchmark VARCHAR(125),
   bid_list_date TIMESTAMP,
