@@ -24,7 +24,7 @@ public class BidList {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private Integer bidListId;
 
     @Column(name = "account")
     @NotBlank(message = "Account is mandatory")
@@ -116,7 +116,9 @@ public class BidList {
         this.bidQuantity = bidQuantity;
     }
 
-    public Integer getBidListId() {
-        return null;
-    }
+//    public Integer getBidListId() {
+//        return null;
+//    }
+
+
 }
