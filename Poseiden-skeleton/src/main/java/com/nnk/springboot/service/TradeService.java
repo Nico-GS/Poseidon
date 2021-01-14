@@ -19,6 +19,14 @@ public class TradeService {
         return tradeRepository.findAll();
     }
 
+    public Trade findById (Integer id) {
+        return tradeRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid ID :" + id));
+    }
+
+    public void delete (Integer id) {
+        tradeRepository.deleteById(id);
+    }
+
     public void save (Trade trade) {
         trade.setCreationDate(Timestamp.valueOf(LocalDateTime.now()));
         trade.setRevisionDate(Timestamp.valueOf(LocalDateTime.now()));
