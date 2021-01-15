@@ -42,5 +42,4 @@ public class User {
     @Size(max = 125)
     private String role;
 
-
 }
