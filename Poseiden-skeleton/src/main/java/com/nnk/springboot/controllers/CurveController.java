@@ -32,7 +32,8 @@ public class CurveController {
     }
 
     @GetMapping("/curvePoint/add")
-    public String addBidForm(CurvePoint bid) {
+    public String addBidForm(Model model) {
+        model.addAttribute("curvePoint", new CurvePoint());
         return "curvePoint/add";
     }
 
