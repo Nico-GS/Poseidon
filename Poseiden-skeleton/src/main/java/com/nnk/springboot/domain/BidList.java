@@ -109,12 +109,6 @@ public class BidList {
 
 
 
-    public BidList(String accountTest, String typeTest, double bidQuantity) {
-        this.account = accountTest;
-        this.type = typeTest;
-        this.bidQuantity = bidQuantity;
-    }
-
 //    public Integer getBidListId() {
 //        return null;
 //    }
