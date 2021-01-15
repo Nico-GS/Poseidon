@@ -55,7 +55,7 @@ public class BidListController {
     public String showUpdateForm(@PathVariable("id") Integer id, Model model) {
         // DONE: get Bid by Id and to model then show to the form
         BidList bidList = bidListRepository.findById(id).orElseThrow((() -> new IllegalArgumentException("Invalid ID BidList ; " + id)));
-        model.addAttribute("bidList", bidList);
+        model.addAttribute("bidLists", bidList);
         return "bidList/update";
     }
 
