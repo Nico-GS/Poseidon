@@ -4,8 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.beans.factory.annotation.Required;
-import org.springframework.boot.context.properties.bind.DefaultValue;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -37,6 +35,7 @@ public class BidList {
     private String type;
 
     @Column(name = "bid_quantity")
+    @Min(1)
     private Double bidQuantity;
 
     @Column(name = "ask_quantity")
@@ -99,11 +98,11 @@ public class BidList {
     @Column(name = "deal_type")
     @Size(max = 125)
     private String dealType;
-    
+
     @Column(name = "source_list_id")
     @Size(max = 125)
     private String sourceListId;
-    
+
     @Column(name = "side")
     @Size(max = 125)
     private String side;
