@@ -38,6 +38,20 @@
 			</thead>
 			<tbody>
 			<!-- TODO: Show all CurvePoint to the table, the action column will have Edit & Delete buttons -->
+			<tr th:if="${curvePoints.empty}">
+				<td colspan="2"> No bid available </td>
+			</tr>
+			<tr th:each="curvePointModel : ${curvePoints}">
+
+				<td><span th:text="${curvePointModel.id}"> ? </span></td>
+				<td><span th:text="${curvePointModel.curveId}"> ? </span></td>
+				<td><span th:text="${curvePointModel.term}"> ? </span></td>
+				<td><span th:text="${curvePointModel.value}"> ? </span></td>
+				<td style="width: 15%" class="text-center">
+					<a th:href="@{/curvePoint/update/{id}(id=${curvePointModel.id})}">Edit</a>&nbsp;|&nbsp;
+					<a th:href="@{/curvePoint/delete/{id}(id=${curvePointModel.id})}" onclick="return confirm('Confirm delete CurvePoint')">Delete</a>
+				</td>
+			</tr>
 			</tbody>
 		</table>
 	</div>

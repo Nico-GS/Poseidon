@@ -15,7 +15,7 @@
 	<div class="row">
 		<form action="#" th:action="@{/curvePoint/update/{id}(id=${curvePoints.id})}" th:object="${curvePoints}" method="post" class="form-horizontal" style="width: 100%">
 			<!--
-			TODO: Create a form to edit the values of CurvePoint, there are 2 buttons: Update data and Cancel to the Curve Point
+			DONE: Create a form to edit the values of CurvePoint, there are 2 buttons: Update data and Cancel to the Curve Point
 			 -->
 			<div class="text-danger validation-summary-valid" data-valmsg-summary="true">
 				<ul th:if="${#fields.hasErrors('*')}">
