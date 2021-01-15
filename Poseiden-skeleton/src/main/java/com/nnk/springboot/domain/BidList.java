@@ -115,9 +115,6 @@ public class BidList {
         this.bidQuantity = bidQuantity;
     }
 
-//    public Integer getBidListId() {
-//        return null;
-//    }
 
 
 }
