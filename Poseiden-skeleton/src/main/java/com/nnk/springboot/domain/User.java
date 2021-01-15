@@ -35,17 +35,17 @@ public class User {
     @Column(name = "fullname")
     @NotBlank(message = "FullName is mandatory")
     @Size(max = 125)
-    private String fullname;
+    private String fullName;
 
     @Column(name = "role")
     @NotBlank(message = "Role is mandatory")
     @Size(max = 125)
     private String role;
 
-    public User(@NotBlank(message = "Username is mandatory") String username, @NotBlank(message = "Password is mandatory") String password, @NotBlank(message = "FullName is mandatory") String fullname, @NotBlank(message = "Role is mandatory") String role) {
+    public User(@NotBlank(message = "Username is mandatory") String username, @NotBlank(message = "Password is mandatory") String password, @NotBlank(message = "FullName is mandatory") String fullName, @NotBlank(message = "Role is mandatory") String role) {
         this.username = username;
         this.password = password;
-        this.fullname = fullname;
+        this.fullName = fullName;
         this.role = role;
     }
 
