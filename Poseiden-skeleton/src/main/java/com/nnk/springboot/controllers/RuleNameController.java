@@ -2,7 +2,6 @@ package com.nnk.springboot.controllers;
 
 import com.nnk.springboot.domain.RuleName;
 import com.nnk.springboot.repositories.RuleNameRepository;
-import com.nnk.springboot.service.RuleNameService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

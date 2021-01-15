@@ -21,7 +21,7 @@ import java.sql.Timestamp;
 @Entity
 @Table(name = "curve_point")
 public class CurvePoint {
-    // TODO: Map columns in data table CURVEPOINT with corresponding java fields
+    // DONE: Map columns in data table CURVEPOINT with corresponding java fields
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

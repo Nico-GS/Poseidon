@@ -70,7 +70,7 @@ public class CurveController {
 
     @GetMapping("/curvePoint/delete/{id}")
     public String deleteBid(@PathVariable("id") Integer id, Model model) {
-        // TODO: Find Curve by Id and delete the Curve, return to Curve list
+        // DONE: Find Curve by Id and delete the Curve, return to Curve list
         CurvePoint curvePoint = curvePointRepository.findById(id).orElseThrow((() -> new IllegalArgumentException("Invalid ID CurvePoint : " + id)));
         curvePointRepository.delete(curvePoint);
         model.addAttribute("curvePoints", curvePointRepository.findAll());
