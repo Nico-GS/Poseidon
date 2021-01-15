@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
@@ -108,6 +109,11 @@ public class BidList {
     private String side;
 
 
+    public BidList(String accountTest, String typeTest, double bidQuantity) {
+        this.account = accountTest;
+        this.type = typeTest;
+        this.bidQuantity = bidQuantity;
+    }
 
 //    public Integer getBidListId() {
 //        return null;
