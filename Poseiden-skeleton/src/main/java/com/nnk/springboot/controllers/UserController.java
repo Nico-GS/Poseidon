@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.thymeleaf.model.IModel;
 
+import javax.annotation.security.RolesAllowed;
 import javax.validation.Valid;
 
 @Controller
@@ -21,6 +22,7 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
+    @RolesAllowed("ADMIN")
     @RequestMapping("/user/list")
     public String home(Model model) {
         model.addAttribute("users", userRepository.findAll());
@@ -29,7 +31,7 @@ public class UserController {
 
     @GetMapping("/user/add")
     public String addUser(Model model) {
-        model.addAttribute("users", new User());
+        model.addAttribute("user", new User());
         return "user/add";
     }
 

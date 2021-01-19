@@ -35,7 +35,7 @@ public class User {
     @Column(name = "fullname")
     @NotBlank(message = "FullName is mandatory")
     @Size(max = 125)
-    private String fullName;
+    private String fullname;
 
     @Column(name = "role")
     @NotBlank(message = "Role is mandatory")
