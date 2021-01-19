@@ -32,7 +32,8 @@ public class TradeController {
     }
 
     @GetMapping("/trade/add")
-    public String addUser(Trade bid) {
+    public String addUser(Model model) {
+        model.addAttribute("trade", new Trade());
         return "trade/add";
     }
 
