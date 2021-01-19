@@ -28,12 +28,13 @@ public class RuleNameController {
     public String home(Model model)
     {
         // DONE: find all RuleName, add to model
-        model.addAttribute("ruleName", ruleNameRepository.findAll());
+        model.addAttribute("ruleNames", ruleNameRepository.findAll());
         return "ruleName/list";
     }
 
     @GetMapping("/ruleName/add")
-    public String addRuleForm(RuleName bid) {
+    public String addRuleForm(Model model) {
+        model.addAttribute("ruleName", new RuleName());
         return "ruleName/add";
     }
 
@@ -53,7 +54,7 @@ public class RuleNameController {
     public String showUpdateForm(@PathVariable("id") Integer id, Model model) {
         // DONE: get RuleName by Id and to model then show to the form
         RuleName ruleName = ruleNameRepository.findById(id).orElseThrow((() -> new IllegalArgumentException("Invalid ID RuleNAme : " + id)));
-        model.addAttribute("ruleNames", ruleNameRepository.findAll());
+        model.addAttribute("ruleName", ruleName);
         return "ruleName/update";
     }
 

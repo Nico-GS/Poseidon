@@ -24,17 +24,17 @@ public class Rating {
     private Integer id;
 
     @Column(name = "moodys_rating")
-    @NotBlank(message = "Moodys Rating is mandatory")
+    @NotNull(message = "Moodys Rating is mandatory")
     @Length(max = 125)
     private String moodysRating;
 
     @Column(name = "sand_p_rating")
-    @NotBlank(message = "SandPRating is mandatory")
+    @NotNull(message = "SandPRating is mandatory")
     @Length(max = 125)
     private String sandPRating;
 
     @Column(name = "fitch_rating")
-    @NotBlank(message = "Fitch Rating is mandatory")
+    @NotNull(message = "Fitch Rating is mandatory")
     @Length(max = 125)
     private String fitchRating;
 

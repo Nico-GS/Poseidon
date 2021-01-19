@@ -37,8 +37,8 @@
 				</tr>
 			</thead>
 			<tbody>
-			<!-- TODO: Show all CurvePoint to the table, the action column will have Edit & Delete buttons -->
-			<tr th:if="${curvePoints.empty}">
+			<!-- DONE: Show all CurvePoint to the table, the action column will have Edit & Delete buttons -->
+			<tr th:each="curvePoints : ${curvePoints}">
 				<td colspan="2"> No bid available </td>
 			</tr>
 			<tr th:each="curvePointModel : ${curvePoints}">
