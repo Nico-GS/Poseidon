@@ -4,64 +4,50 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import java.sql.Timestamp;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "rule_name")
+@Table(name = "rulename")
 public class RuleName {
 
-    // DONE:: Map columns in data table RULENAME with corresponding java fields
+    // DONE: Map columns in data table RULENAME with corresponding java fields
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
 
-    @Column(name = "name")
     @NotBlank(message = "Name is mandatory")
-    @Length(max = 125)
     private String name;
 
-    @Column(name = "description")
-    @NotBlank(message = "Description is mandatory")
-    @Length(max = 125)
+    @NotBlank(message = "Description RuleName is mandatory")
     private String description;
 
-    @Column(name = "json")
     @NotBlank(message = "Json is mandatory")
-    @Length(max = 125)
     private String json;
 
-    @Column(name = "template")
     @NotBlank(message = "Template is mandatory")
-    @Length(max = 512)
     private String template;
 
-    @Column(name = "sql_str")
-    @NotBlank(message = "SqlStr is mandatory")
-    @Length(max = 125)
+    @NotBlank(message = "sqlStr is mandatory")
     private String sqlStr;
 
-    @Column(name = "sql_part")
-    @NotBlank(message = "SqlPart is mandatory")
-    @Length(max = 125)
+
     private String sqlPart;
 
-
-    public RuleName(String ruleName, String description, String json, String template, String sqlStr, String sqlPart) {
-        this.name = ruleName;
+    public RuleName(@NotBlank(message = "name is mandatory")String name,@NotBlank(message = "description is mandatory") String description,@NotBlank(message = "json is mandatory")String json,
+                    @NotBlank(message = "template is mandatory")String template,@NotBlank(message = "sqlStr is mandatory") String sqlStr, String sqlPart) {
+        this.name = name;
         this.description = description;
         this.json = json;
         this.template = template;
         this.sqlStr = sqlStr;
         this.sqlPart = sqlPart;
     }
+
 }

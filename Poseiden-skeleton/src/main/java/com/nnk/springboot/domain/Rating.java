@@ -4,48 +4,45 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
 @AllArgsConstructor
-@NoArgsConstructor
 @Entity
 @Table(name = "rating")
 public class Rating {
+
     // DONE: Map columns in data table RATING with corresponding java fields
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
 
-    @Column(name = "moodys_rating")
-    @NotNull(message = "Moodys Rating is mandatory")
-    @Length(max = 125)
+    @NotNull(message = "MoodysRating is mandatory")
     private String moodysRating;
 
-    @Column(name = "sand_p_rating")
     @NotNull(message = "SandPRating is mandatory")
-    @Length(max = 125)
     private String sandPRating;
 
-    @Column(name = "fitch_rating")
-    @NotNull(message = "Fitch Rating is mandatory")
-    @Length(max = 125)
+    @NotNull(message = "FitchRating is mandatory")
     private String fitchRating;
 
-    @Column(name = "order_number")
+    @NotNull(message = "OrderNumber must not be null")
     private Integer orderNumber;
 
 
-    public Rating(String moodysRating, String sandPRating, String fitchRating, int orderNb) {
+    public Rating(@NotNull(message = "MoodysRating is mandatory") String moodysRating, @NotNull(message = "sandPRating is mandatory") String sandPRating, @NotNull(message = "fitchRating is mandatory") String fitchRating, @NotNull(message = "must not be null") Integer orderNumber) {
         this.moodysRating = moodysRating;
         this.sandPRating = sandPRating;
         this.fitchRating = fitchRating;
-        this.orderNumber = orderNb;
+        this.orderNumber = orderNumber;
+    }
+
+
+    public Rating() {
+
     }
 }

@@ -1,120 +1,229 @@
 package com.nnk.springboot.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.beans.factory.annotation.Required;
 
 import javax.persistence.*;
-import javax.validation.constraints.*;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import java.sql.Date;
 import java.sql.Timestamp;
-import java.util.List;
 
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
-@Table(name = "bid_list")
+@Table(name = "bidlist")
 public class BidList {
     // DONE: Map columns in data table BIDLIST with corresponding java fields
-
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer bidListId;
-
-    @Column(name = "account")
-    @NotBlank(message = "Account is mandatory")
-    @Size(max = 30)
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    private Integer BidListId;
+    @NotBlank(message = "account is mandatory")
     private String account;
-
-    @Column(name = "type")
-    @NotBlank(message = "Type is mandatory")
-    @Size(max = 30)
+    @NotBlank(message = "type is mandatory")
     private String type;
-
-    @Column(name = "bid_quantity")
     @Min(1)
-    private Double bidQuantity;
-
-    @Column(name = "ask_quantity")
-    private Double askQuantity;
-
-    @Column(name = "bid")
-    private Double bid;
-
-    @Column(name = "ask")
-    private Double ask;
-
-    @Column(name = "benchmark")
-    @Size(max = 125)
+    private double bidQuantity;
+    private double askQuantity;
+    private double bid;
+    private double ask;
     private String benchmark;
-
-    @Column(name = "bid_list_date")
-    @DateTimeFormat(pattern = "MM/dd/yyyy")
     private Timestamp bidListDate;
-
-    @Column(name = "commentary")
-    @Size(max = 125)
     private String commentary;
-
-    @Column(name = "security")
-    @Size(max = 125)
     private String security;
-
-    @Column(name = "status")
-    @Size(max = 10)
     private String status;
-
-    @Column(name = "trader")
-    @Size(max = 125)
     private String trader;
-
-    @Column(name = "book")
-    @Size(max = 125)
     private String book;
-
-    @Column(name = "creation_name")
-    @Size(max = 125)
     private String creationName;
-
-    @Column(name = "creation_date")
-    @DateTimeFormat(pattern = "MM/dd/yyyy")
     private Timestamp creationDate;
-
-    @Column(name = "revision_name")
-    @Size(max = 125)
     private String revisionName;
-
-    @Column(name = "revision_date")
-    @DateTimeFormat(pattern = "MM/dd/yyyy")
     private Timestamp revisionDate;
-
-    @Column(name = "deal_name")
-    @Size(max = 125)
     private String dealName;
-
-    @Column(name = "deal_type")
-    @Size(max = 125)
     private String dealType;
-
-    @Column(name = "source_list_id")
-    @Size(max = 125)
     private String sourceListId;
-
-    @Column(name = "side")
-    @Size(max = 125)
     private String side;
 
-
-    public BidList(String accountTest, String typeTest, double bidQuantity) {
-        this.account = accountTest;
-        this.type = typeTest;
+    public BidList(@NotBlank(message = "account is mandatory") String account, @NotBlank(message = "type is mandatory") String type,
+                   @Min(1) double bidQuantity) {
+        this.account = account;
+        this.type = type;
         this.bidQuantity = bidQuantity;
     }
 
+    public BidList() {
+    }
 
+    public Integer getBidListId() {
+        return BidListId;
+    }
 
+    public void setBidListId(Integer bidListId) {
+        BidListId = bidListId;
+    }
+
+    public String getAccount() {
+        return account;
+    }
+
+    public void setAccount(String account) {
+        this.account = account;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public double getBidQuantity() {
+        return bidQuantity;
+    }
+
+    public void setBidQuantity(double bidQuantity) {
+        this.bidQuantity = bidQuantity;
+    }
+
+    public double getAskQuantity() {
+        return askQuantity;
+    }
+
+    public void setAskQuantity(double askQuantity) {
+        this.askQuantity = askQuantity;
+    }
+
+    public double getBid() {
+        return bid;
+    }
+
+    public void setBid(double bid) {
+        this.bid = bid;
+    }
+
+    public double getAsk() {
+        return ask;
+    }
+
+    public void setAsk(double ask) {
+        this.ask = ask;
+    }
+
+    public String getBenchmark() {
+        return benchmark;
+    }
+
+    public void setBenchmark(String benchmark) {
+        this.benchmark = benchmark;
+    }
+
+    public Timestamp getBidListDate() {
+        return bidListDate;
+    }
+
+    public void setBidListDate(Timestamp bidListDate) {
+        this.bidListDate = bidListDate;
+    }
+
+    public String getCommentary() {
+        return commentary;
+    }
+
+    public void setCommentary(String commentary) {
+        this.commentary = commentary;
+    }
+
+    public String getSecurity() {
+        return security;
+    }
+
+    public void setSecurity(String security) {
+        this.security = security;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getTrader() {
+        return trader;
+    }
+
+    public void setTrader(String trader) {
+        this.trader = trader;
+    }
+
+    public String getBook() {
+        return book;
+    }
+
+    public void setBook(String book) {
+        this.book = book;
+    }
+
+    public String getCreationName() {
+        return creationName;
+    }
+
+    public void setCreationName(String creationName) {
+        this.creationName = creationName;
+    }
+
+    public Timestamp getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(Timestamp creationDate) {
+        this.creationDate = creationDate;
+    }
+
+    public String getRevisionName() {
+        return revisionName;
+    }
+
+    public void setRevisionName(String revisionName) {
+        this.revisionName = revisionName;
+    }
+
+    public Timestamp getRevisionDate() {
+        return revisionDate;
+    }
+
+    public void setRevisionDate(Timestamp revisionDate) {
+        this.revisionDate = revisionDate;
+    }
+
+    public String getDealName() {
+        return dealName;
+    }
+
+    public void setDealName(String dealName) {
+        this.dealName = dealName;
+    }
+
+    public String getDealType() {
+        return dealType;
+    }
+
+    public void setDealType(String dealType) {
+        this.dealType = dealType;
+    }
+
+    public String getSourceListId() {
+        return sourceListId;
+    }
+
+    public void setSourceListId(String sourceListId) {
+        this.sourceListId = sourceListId;
+    }
+
+    public String getSide() {
+        return side;
+    }
+
+    public void setSide(String side) {
+        this.side = side;
+    }
 }

@@ -11,10 +11,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.thymeleaf.model.IModel;
 
-import javax.annotation.security.RolesAllowed;
 import javax.validation.Valid;
+import java.util.regex.Pattern;
 
 @Controller
 public class UserController {
@@ -22,9 +21,12 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
-    @RolesAllowed("ADMIN")
+    private static final String PASSWORD_REGEX ="^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,60}$";
+    private static final Pattern PASSWORD = Pattern.compile(PASSWORD_REGEX);
+
     @RequestMapping("/user/list")
-    public String home(Model model) {
+    public String home(Model model)
+    {
         model.addAttribute("users", userRepository.findAll());
         return "user/list";
     }
@@ -37,12 +39,15 @@ public class UserController {
 
     @PostMapping("/user/validate")
     public String validate(@Valid User user, BindingResult result, Model model) {
+
         if (!result.hasErrors()) {
             BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-            user.setPassword(encoder.encode(user.getPassword()));
-            userRepository.save(user);
-            model.addAttribute("users", userRepository.findAll());
-            return "redirect:/user/list";
+            if(PASSWORD.matcher(user.getPassword()).matches()) {
+                user.setPassword(encoder.encode(user.getPassword()));
+                userRepository.save(user);
+                model.addAttribute("users", userRepository.findAll());
+                return "redirect:/user/list";
+            }
         }
         return "user/add";
     }
@@ -61,13 +66,15 @@ public class UserController {
         if (result.hasErrors()) {
             return "user/update";
         }
-
-        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        user.setPassword(encoder.encode(user.getPassword()));
         user.setId(id);
-        userRepository.save(user);
-        model.addAttribute("users", userRepository.findAll());
-        return "redirect:/user/list";
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        if(PASSWORD.matcher(user.getPassword()).matches()) {
+            user.setPassword(encoder.encode(user.getPassword()));
+            userRepository.save(user);
+            model.addAttribute("users", userRepository.findAll());
+            return "redirect:/user/list";
+        }
+        return "user/update";
     }
 
     @GetMapping("/user/delete/{id}")

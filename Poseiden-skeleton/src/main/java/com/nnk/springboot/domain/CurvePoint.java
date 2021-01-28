@@ -1,17 +1,13 @@
 package com.nnk.springboot.domain;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-import java.math.BigDecimal;
+import javax.validation.constraints.*;
 import java.sql.Timestamp;
 
 @Getter
@@ -19,35 +15,31 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "curve_point")
+@Table(name = "curvepoint")
 public class CurvePoint {
     // DONE: Map columns in data table CURVEPOINT with corresponding java fields
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
 
-    @Column(name = "curve_id", length = 4)
-    @NotNull
+    @NotNull(message = "CurveID must be not null")
     private Integer curveId;
 
-    @Column(name = "as_of_date")
     private Timestamp asOfDate;
 
-    @Column(name = "term")
-    private Double term;
+    @Min(1)
+    private double term;
 
-    @Column(name = "value")
-    private Double value;
+    @Min(1)
+    private double value;
 
-    @Column(name = "creation_date")
     private Timestamp creationDate;
 
-    public CurvePoint(int curveId, double term, Double value) {
+    public CurvePoint(@NotNull(message = "must not be null") Integer curveId, @Min(1) double term, @Min(1) double value) {
         this.curveId = curveId;
         this.term = term;
         this.value = value;
     }
-
 
 }

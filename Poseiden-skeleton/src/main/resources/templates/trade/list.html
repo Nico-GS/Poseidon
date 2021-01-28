@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" 
-	  xmlns:th="http://www.thymeleaf.org">
+	  xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
 <meta charset="utf-8"/>
 <title>Home</title>
@@ -26,6 +26,7 @@
 	<div class="row"><h2>Trade List</h2></div>
 	<div class="row">
 		<a href="/trade/add" class="btn btn-primary btn-sm">Add New</a>
+		
 		<table class="table table-bordered">
 			<thead>
 				<tr>
@@ -37,7 +38,9 @@
 				</tr>
 			</thead>
 			<tbody>
+			
 			<!-- DONE: Show all Trade to the table, the Action column will have Edit & Delete buttons -->
+			
 			<tr th:each="trade : ${trades}">
 				<td style="width: 10%" th:text="${trade.tradeId}"></td>
 				<td th:text="${trade.account}"></td>
